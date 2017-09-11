@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('buline')->group(function (){
+   Route::get('/','BukangController@index')->name('beranda');
+   Route::get('/friends','BukangController@showFriends')->name('friends');
+   Route::get('/friends/profile','BukangController@showFriendsProfile')->name('friends.profile');
+   Route::get('/profile','BukangController@showProfile')->name('profile');
+});
